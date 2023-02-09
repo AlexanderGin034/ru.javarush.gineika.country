@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ru.javarush.gineika.country:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ru.javarush.gineika.country</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ru_avarush_gineika_country-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ru.javarush.gineika.country:war exploded" />
+    </root>
+  </artifact>
+</component>
