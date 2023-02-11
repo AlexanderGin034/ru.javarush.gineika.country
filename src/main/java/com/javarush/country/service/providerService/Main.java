@@ -1,18 +1,23 @@
 package com.javarush.country.service.providerService;
 
+import com.javarush.country.dao.CityDao;
+import com.javarush.country.entity.City;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import java.util.List;
+
 public class Main {
-//    public static void main(String[] args) {
-//        SessionFactory sessionFactory = new PropertiesSessionFactoryProviderImpl().getSessionFactory();
+    public static void main(String[] args) {
+        SessionFactory sessionFactory = new PropertiesSessionFactoryProviderImpl().getSessionFactory();
+        CityDao cityDao = new CityDao(sessionFactory);
+        List<City> allCities = cityDao.findAll();
+
+
 //        try (Session session = sessionFactory.openSession()) {
-//            String city = "Gent";
-//            String sql = "SELECT continent FROM world.country where id = ?";
-//            Query<Integer> query = session.createNativeQuery(sql, Integer.class);
-//            query.setParameter(1, 1);
-//            Integer s = query.uniqueResult();
+//            Query<City> query = session.createQuery("select c from City c", City.class);
+//            query.stream().forEach(System.out::println);
 //        }
-//    }
+    }
 }
