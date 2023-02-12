@@ -25,7 +25,8 @@ public class Country {
     private String name;
 
     @Enumerated(EnumType.ORDINAL)
-    @Column(name = "continent", columnDefinition = "0-ASIA, 1-EUROPE, 2-NORTH_AMERICA, 3-AFRICA, 4-OCEANIA, 5-ANTARCTICA, 6-SOUTH_AMERICA")
+    @Column(name = "continent",
+            columnDefinition = "0-ASIA, 1-EUROPE, 2-NORTH_AMERICA, 3-AFRICA, 4-OCEANIA, 5-ANTARCTICA, 6-SOUTH_AMERICA")
     private Continent continent;
 
     @Column(name = "region", length = 26)
@@ -58,7 +59,7 @@ public class Country {
     @Column(name = "head_of_state", length = 45)
     private String headOfState;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "capital")
     private City capital;
 }

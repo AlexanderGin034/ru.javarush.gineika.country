@@ -20,6 +20,9 @@ public class CountryLanguage {
     @JoinColumn(name = "country_id")
     private Country country;
 
+    @Column(name = "language", length = 30)
+    private String language;
+
     @Column(name = "is_official", columnDefinition = "BIT")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isOfficial;
