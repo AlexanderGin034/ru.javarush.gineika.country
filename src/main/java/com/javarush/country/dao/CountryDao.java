@@ -12,7 +12,7 @@ public class CountryDao extends ParentDao<Country> {
 
     @Override
     public List<Country> findAll() {
-        String hql = "select c from Country c join fetch c.capital";
+        String hql = "select c from Country c join fetch c.languages";
         return getSession()
                 .createQuery(hql, Country.class)
                 .list();

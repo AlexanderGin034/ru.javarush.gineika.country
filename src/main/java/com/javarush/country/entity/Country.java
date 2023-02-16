@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Getter @Setter
 
@@ -62,4 +63,8 @@ public class Country {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "capital")
     private City capital;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "country_id")
+    private Set<CountryLanguage> languages;
 }

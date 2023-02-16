@@ -1,6 +1,5 @@
 package com.javarush.country.dao;
 
-import com.javarush.country.service.providerService.PropertiesSessionFactoryProviderImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -37,6 +36,7 @@ public class ParentDao<T> {
                 .createQuery(hql, Long.class);
         return Math.toIntExact(query.uniqueResult());
     }
+
     protected Session getSession() {
         return sessionFactory.openSession();
     }

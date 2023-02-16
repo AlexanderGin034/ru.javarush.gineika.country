@@ -16,7 +16,7 @@ public class CountryLanguage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
     private Country country;
 
@@ -27,6 +27,6 @@ public class CountryLanguage {
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isOfficial;
 
-    @Column(name = "perecentage")
+    @Column(name = "percentage")
     private BigDecimal percentage;
 }
