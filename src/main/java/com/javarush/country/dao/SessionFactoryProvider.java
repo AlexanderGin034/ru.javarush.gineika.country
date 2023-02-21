@@ -1,4 +1,4 @@
-package com.javarush.country.entity;
+package com.javarush.country.dao;
 
 import org.hibernate.SessionFactory;
 

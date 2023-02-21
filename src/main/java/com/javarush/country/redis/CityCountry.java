@@ -1,13 +1,17 @@
 package com.javarush.country.redis;
 
 import com.javarush.country.entity.Continent;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.Set;
 
 @Getter @Setter
+@ToString
+@EqualsAndHashCode
 
 public class CityCountry {
     private Integer id;

@@ -1,5 +1,8 @@
-package com.javarush.country.entity;
+package com.javarush.country.dao;
 
+import com.javarush.country.entity.City;
+import com.javarush.country.entity.Country;
+import com.javarush.country.entity.CountryLanguage;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

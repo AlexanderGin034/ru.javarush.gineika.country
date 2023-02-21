@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.Set;
 
 @Getter @Setter
@@ -67,4 +68,40 @@ public class Country {
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id")
     private Set<CountryLanguage> languages;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country country = (Country) o;
+        return id.equals(country.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", extraCode='" + extraCode + '\'' +
+                ", name='" + name + '\'' +
+                ", continent=" + continent +
+                ", region='" + region + '\'' +
+                ", surfaceArea=" + surfaceArea +
+                ", indepYear=" + indepYear +
+                ", population=" + population +
+                ", lifeExpectancy=" + lifeExpectancy +
+                ", GNP=" + GNP +
+                ", DNPOId=" + DNPOId +
+                ", localName='" + localName + '\'' +
+                ", governmentForm='" + governmentForm + '\'' +
+                ", headOfState='" + headOfState + '\'' +
+                ", capital=" + capital +
+                ", languages=" + languages +
+                '}';
+    }
 }

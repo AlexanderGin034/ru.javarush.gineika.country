@@ -7,16 +7,18 @@ import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class CityDao extends ParentDao<City> {
+public class CityDao extends AbstractDao<City> {
+    private static final int STEP = 500;
     public CityDao(SessionFactory sessionFactory) {
         super(sessionFactory, City.class);
     }
 
-    public City getById(Integer id) {
+    public Optional<City> getById(Integer id) {
         Query<City> query = getSession().createQuery("select c from City c join fetch c.countryId where c.id = :ID", City.class);
         query.setParameter("ID", id);
-        return query.getSingleResult();
+        return Optional.ofNullable(query.getSingleResult());
     }
 
     public List<City> fetchData() {
@@ -25,9 +27,8 @@ public class CityDao extends ParentDao<City> {
             session.beginTransaction();
 
             int totalCount = getTotalCount();
-            int step = 500;
-            for (int i = 0; i < totalCount; i += step) {
-                allCities.addAll(getItems(i, step));
+            for (int i = 0; i < totalCount; i += STEP) {
+                allCities.addAll(findAll(i, STEP));
             }
             session.getTransaction().commit();
             return allCities;

@@ -6,12 +6,12 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class ParentDao<T> {
+public abstract class AbstractDao<T> {
 
     private final Class<T> tClass;
     private final SessionFactory sessionFactory;
     
-    ParentDao(SessionFactory sessionFactory, Class<T> tClass) {
+    AbstractDao(SessionFactory sessionFactory, Class<T> tClass) {
         this.sessionFactory = sessionFactory;
         this.tClass = tClass;
     }
@@ -22,7 +22,8 @@ public class ParentDao<T> {
                 .createQuery(hql, tClass)
                 .list();
     }
-    public List<T> getItems(int offset, int limit) {
+
+    public List<T> findAll(int offset, int limit) {
         String hql = "select c from " + tClass.getName() + " c";
         Query<T> query = getSession().createQuery(hql, tClass);
         query.setFirstResult(offset);
